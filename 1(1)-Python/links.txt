@@ -6,7 +6,7 @@
 2164  https://www.acmicpc.net/source/96199291
 11866 https://www.acmicpc.net/source/96199299
 
-1629 
+1629 https://www.acmicpc.net/source/96199854
 10830 
 
 3080 
