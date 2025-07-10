@@ -17,7 +17,14 @@ def josephus_problem(n: int, k: int) -> list[int]:
     n명 중 k번째마다 제거하는 순서를 반환
     """
     # 구현하세요!
-    pass
+    solution : list[int] = []
+    q=create_circular_queue(n)
+    while len(q)!=0:
+        solution.append(rotate_and_remove(q,k))
+    
+
+    return solution
+
 
 def solve_josephus() -> None:
     """입, 출력 format"""

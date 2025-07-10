@@ -15,9 +15,15 @@ def create_circular_queue(n: int) -> deque[int]:
 def rotate_and_remove(queue: deque[int], k: int) -> int:
     """
     큐에서 k번째 원소를 제거하고 반환합니다.
+    queue: 덱
+    k: 원소 순서
     """
-    # 구현하세요!
-    pass
+    # 구현하세요
+
+    for i in range(k-1):
+        x: int = queue.popleft()
+        queue.append(x)
+    return queue.popleft()
 
 
 
@@ -38,7 +44,14 @@ def josephus_problem(n: int, k: int) -> list[int]:
     n명 중 k번째마다 제거하는 순서를 반환
     """
     # 구현하세요!
-    pass
+    solution : list[int] = []
+    q=create_circular_queue(n)
+    while len(q)!=0:
+        solution.append(rotate_and_remove(q,k))
+    
+
+    return solution
+
 
 def solve_josephus() -> None:
     """입, 출력 format"""

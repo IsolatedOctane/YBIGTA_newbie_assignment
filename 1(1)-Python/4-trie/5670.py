@@ -1,7 +1,6 @@
 from lib import Trie
 import sys
 
-
 """
 TODO:
 - 일단 Trie부터 구현하기
@@ -24,16 +23,45 @@ def count(trie: Trie, query_seq: str) -> int:
         if len(trie[pointer].children) > 1 or trie[pointer].is_end:
             cnt += 1
 
-        new_index = None # 구현하세요!
-
-        pointer = new_index
+        # 구현하세요!
+        for i in trie[pointer].children:
+            if element==trie[i].body:
+                pointer=i
+                break
 
     return cnt + int(len(trie[0].children) == 1)
 
 
 def main() -> None:
     # 구현하세요!
-    pass
+    solution: int = 0
+
+
+    
+
+    while True:
+        t : Trie[str] = Trie()
+        solution=0
+        try:
+            n=int(sys.stdin.readline().strip())
+        except:
+            break
+        user_input: list[str] = []
+        for i in range(n):
+            tmp=sys.stdin.readline().strip()
+            t.push(tmp)
+            user_input.append(tmp)
+        
+        for j in user_input:
+            solution+=count(t,j)
+        
+
+        print(format(solution/n,".2f"))
+
+
+
+
+
 
 
 if __name__ == "__main__":

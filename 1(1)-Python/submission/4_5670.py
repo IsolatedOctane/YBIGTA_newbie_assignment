@@ -31,13 +31,30 @@ class Trie(list[TrieNode[T]]):
         action: trie에 seq을 저장하기
         """
         # 구현하세요!
+        curr_index : int = 0
+        found: bool = False
+        for i in seq:
+            found= False
+            for child in self[curr_index].children:
+                if self[child].body==i:
+                    curr_index=child
+                    break
+            if not found:
+                self.append(TrieNode(body=i))
+                self[curr_index].children.append(len(self)-1)
+                curr_index=len(self)-1
+        self[curr_index].is_end=True
+
+
+
+
+
         pass
 
     # 구현하세요!
 
 
 import sys
-
 
 """
 TODO:
@@ -61,16 +78,45 @@ def count(trie: Trie, query_seq: str) -> int:
         if len(trie[pointer].children) > 1 or trie[pointer].is_end:
             cnt += 1
 
-        new_index = None # 구현하세요!
-
-        pointer = new_index
+        # 구현하세요!
+        for i in trie[pointer].children:
+            if element==trie[i].body:
+                pointer=i
+                break
 
     return cnt + int(len(trie[0].children) == 1)
 
 
 def main() -> None:
     # 구현하세요!
-    pass
+    solution: int = 0
+
+
+    
+
+    while True:
+        t : Trie[str] = Trie()
+        solution=0
+        try:
+            n=int(sys.stdin.readline().strip())
+        except:
+            break
+        user_input: list[str] = []
+        for i in range(n):
+            tmp=sys.stdin.readline().strip()
+            t.push(tmp)
+            user_input.append(tmp)
+        
+        for j in user_input:
+            solution+=count(t,j)
+        
+
+        print(format(solution/n,".2f"))
+
+
+
+
+
 
 
 if __name__ == "__main__":
