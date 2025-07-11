@@ -37,6 +37,7 @@ class Trie(list[TrieNode[T]]):
             found= False
             for child in self[curr_index].children:
                 if self[child].body==i:
+                    found=True
                     curr_index=child
                     break
             if not found:

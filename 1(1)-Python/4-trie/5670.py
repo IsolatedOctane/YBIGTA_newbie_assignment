@@ -20,7 +20,7 @@ def count(trie: Trie, query_seq: str) -> int:
     cnt = 0
 
     for element in query_seq:
-        if len(trie[pointer].children) > 1 or trie[pointer].is_end:
+        if len(trie[pointer].children) > 1 or trie[pointer].is_end or pointer==0:
             cnt += 1
 
         # 구현하세요!
@@ -29,7 +29,7 @@ def count(trie: Trie, query_seq: str) -> int:
                 pointer=i
                 break
 
-    return cnt + int(len(trie[0].children) == 1)
+    return cnt
 
 
 def main() -> None:
