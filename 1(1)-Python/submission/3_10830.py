@@ -47,7 +47,11 @@ class Matrix:
 
     def __setitem__(self, key: tuple[int, int], value: int) -> None:
         # 구현하세요!
-        pass
+        """
+        key: x행 y열
+        value: 행렬의 값
+        """
+        self.matrix[key[0]][key[1]]=value % self.MOD
 
     def __matmul__(self, matrix: Matrix) -> Matrix:
         x, m = self.shape
@@ -65,11 +69,43 @@ class Matrix:
 
     def __pow__(self, n: int) -> Matrix:
         # 구현하세요!
-        pass
+        """
+        matrix의 거듭제곱을 계산하는 메소드
+
+        1629에서 풀었던 것 처럼, 분할 정복을 이용한다.
+
+        0: base case
+
+        그외는 홀수와 짝수로 나누어서 계산해보자.
+
+        """
+        if n==0:  #identity matrix
+            return Matrix.eye(self.shape[0])
+        else:
+            tmp: Matrix = self.__pow__(n//2)
+            if n%2==0:
+                return tmp.__matmul__(tmp)
+            else:
+                return self.__matmul__(tmp.__matmul__(tmp))
 
     def __repr__(self) -> str:
         # 구현하세요!
-        pass
+        """
+        matrix 출력 메소드.
+
+        solution: 리턴 스트링
+
+        """
+        solution : str = ""
+
+        for i in range(len(self.matrix)):
+            for j in range(len(self.matrix[i])):
+                solution+=(str(self.matrix[i][j] % self.MOD)+" ")
+            solution+="\n"
+        return solution
+
+
+
 
 
 from typing import Callable
