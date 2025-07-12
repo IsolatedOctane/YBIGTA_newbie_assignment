@@ -12,6 +12,6 @@
 3080 
 5670 https://www.acmicpc.net/source/96227826
 
-2243 
+2243 https://www.acmicpc.net/source/96262118
 3653 
 17408

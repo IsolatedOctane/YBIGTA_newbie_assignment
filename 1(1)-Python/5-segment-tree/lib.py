@@ -20,9 +20,10 @@ class SegmentTree(Generic[T, U]):
     update를 bottom-up 방식으로 구현함
 
     """
-    def __init__(self, n):
+    def __init__(self, n) ->None:
         """
         n개의 element의 segment tree를 할당
+        tree.size+1 부터 leaf node가 저장됨.
         """
         self.size: int = 1
         while self.size<n:
@@ -32,10 +33,11 @@ class SegmentTree(Generic[T, U]):
 
 
 
-    def update(self, index: int, diff: int):
+    def update(self, index: int, diff: int) -> None:
         """
         배열의 index번째 element의 값이 diff만큼 변했을때,
         segment tree 내부의 값을 조정한다.
+        참고: index: 1-indexed
         """
         tree_index: int = index +  self.size 
         while tree_index>0:
