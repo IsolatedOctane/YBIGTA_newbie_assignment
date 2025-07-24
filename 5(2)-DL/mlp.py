@@ -230,19 +230,19 @@ class MultiLayerPerceptron(object):
             # Forward propagation 후에 loss 계산, 
             # Back propagation 수행 후에 gradient update
 
-            y_hat, cache = #TODO
-            loss = #TODO
-            grad = #TODO
+            y_hat, cache = self.forward_propagation(X_train) #TODO
+            loss = self.compute_loss(y_hat, y_train, L2_norm)   #TODO
+            grad = self.back_propagation(cache,X_train,y_train,L2_norm)                    #TODO
 
             # Gradient update
-            self.model['W1'] -=  #TODO
-            self.model['b1'] -= #TODO
-            self.model['W2'] -= #TODO
-            self.model['b2'] -= #TODO
-            self.model['W3'] -= #TODO
-            self.model['b3'] -= #TODO
-            self.model['W4'] -= #TODO
-            self.model['b4'] -= #TODO
+            self.model['W1'] -=  learning_rate *grad['dW1']#TODO
+            self.model['b1'] -=  learning_rate *grad['db1']#TODO
+            self.model['W2'] -=  learning_rate *grad['dW2']#TODO
+            self.model['b2'] -=  learning_rate *grad['db2']#TODO
+            self.model['W3'] -=  learning_rate *grad['dW3']         #TODO
+            self.model['b3'] -=  learning_rate *grad['db3']#TODO
+            self.model['W4'] -=  learning_rate *grad['dW4']#TODO
+            self.model['b4'] -=  learning_rate *grad['db4']#TODO
 
             ################# 
             if (it+1) % 1000 == 0:
@@ -275,7 +275,8 @@ class MultiLayerPerceptron(object):
     def predict(self, X):
         ### CODE HERE ###
         # Binary classification이므로 0.5 이상이면 1, 아니면 0으로 예측
-        
+        y_hat, _ = self.forward_propagation(X)
+        predictions= (y_hat>=0.5).astype(int)
         ##################
         return predictions
     
