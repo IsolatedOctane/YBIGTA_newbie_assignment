@@ -5,14 +5,14 @@ device = "cpu"
 d_model = 256
 
 # Word2Vec
-window_size = 5
-method: Literal["cbow", "skipgram"] = "cbow"
+window_size = 7
+method: Literal["cbow", "skipgram"] = "skipgram"
 lr_word2vec = 1e-03
-num_epochs_word2vec = 7
+num_epochs_word2vec = 3
 
 # GRU
 hidden_size = 256
 num_classes = 4
-lr = 5e-03
+lr = 2e-03
 num_epochs = 100
-batch_size = 16
+batch_size = 163
